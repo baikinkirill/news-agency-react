@@ -911,11 +911,10 @@ button, input, textarea {
         font-weight: 500;
         padding: 15px 0;
         border: solid 1px #F2F2F2;
-        background: #F2F2F2;
+        background: none;
     
         &_login {
             width: 130px;
-            background: none;
 
             &:hover {
                 background: rgba($color: #000, $alpha: 0.025);
@@ -928,6 +927,10 @@ button, input, textarea {
             &:hover {
                 background: rgba($color: #000, $alpha: 0.025);
             }
+        }
+
+        &_active {
+            background: #f2f2f2;
         }
 
         &_action {

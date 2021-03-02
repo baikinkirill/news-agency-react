@@ -37,24 +37,6 @@ function Footer() {
                                 )    
                             })
                         }
-                        
-                        {/* <div className="footer-links__container">
-                            <p className="footer-links__item">Новости</p>
-                            <p className="footer-links__item">Тренды</p>
-                            <p className="footer-links__item">Политика</p>
-                            <p className="footer-links__item">Бизнес</p>
-                        </div>
-                        <div className="footer-links__container">
-                            <p className="footer-links__item">Наука</p>
-                            <p className="footer-links__item">Культура</p>
-                            <p className="footer-links__item">Фильмы</p>
-                            <p className="footer-links__item">Сериалы</p>
-                        </div>
-                        <div className="footer-links__container">
-                            <p className="footer-links__item">Игры</p>
-                            <p className="footer-links__item">Технологии</p>
-                            <p className="footer-links__item">Спорт</p>
-                        </div>*/}
                     </div>
                 </div>
                 <div className="footer-partion footer-partition_contacts">

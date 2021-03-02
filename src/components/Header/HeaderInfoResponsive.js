@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 
-function HeaderInfoResponsive({ currencies, currentDate, weatherTemp }) {
+import { HeaderInfoContext } from './HeaderInfoContext'
+
+function HeaderInfoResponsive() {
+
+    const { currenciesContext, weatherContext, dateContext } = useContext(HeaderInfoContext)
+
+    const [currencies] = currenciesContext
+    const [weatherTemp] = weatherContext
+    const [currentDate] = dateContext
 
     const formatTime = (date) => ("0" + date).slice(-2)
     const time = `${formatTime(currentDate.getDate())}.${formatTime(currentDate.getMonth() + 1)}.${currentDate.getFullYear()}, ${formatTime(currentDate.getHours())}:${formatTime(currentDate.getMinutes())}`
