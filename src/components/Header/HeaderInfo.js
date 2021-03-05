@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { HeaderInfoContext } from './HeaderInfoContext'
 
@@ -19,7 +19,7 @@ function HeaderInfo({ type }) {
     return (
         <section className="info-section">
             <div className={(type === "auth") ? "container info-section__container_login" : "container" }>
-                <NavLink to="/"><img src={logo} alt="" className="info-section__logo" /></NavLink>
+                <Link to="/"><img src={logo} alt="" className="info-section__logo" /></Link>
                 <ul className="list info-section__list">
                     <li className="list-item info-section__list-item"><i className="ri-calendar-todo-line"></i> {time}</li>
                     <li className="list-item info-section__list-item"><i className="ri-sun-cloudy-line"></i> Москва, {weatherTemp}°C</li>
@@ -29,9 +29,9 @@ function HeaderInfo({ type }) {
                 </ul>
                 { (type === "auth") ? null : 
                 (<div className="info-section__auth">
-                    <NavLink to="/auth?type=register"><button className="info-section__btn info-section__register-btn">Зарегистрироваться</button></NavLink>
-                    <NavLink to="/auth?type=login"><button className="info-section__btn info-section__login-btn">Войти</button></NavLink>
-                    <NavLink to="/auth"><button className="info-section__btn info-section__mobile-btn"><i className="ri-login-box-line"></i></button></NavLink>
+                    <Link to="/auth?type=register"><button className="info-section__btn info-section__register-btn">Зарегистрироваться</button></Link>
+                    <Link to="/auth?type=login"><button className="info-section__btn info-section__login-btn">Войти</button></Link>
+                    <Link to="/auth"><button className="info-section__btn info-section__mobile-btn"><i className="ri-login-box-line"></i></button></Link>
                 </div>) }
             </div>
         </section>

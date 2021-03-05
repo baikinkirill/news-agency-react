@@ -1,54 +1,49 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
+import axios from 'axios'
 
 import MainContentNewsBar from './MainContentNewsBar'
 import MainContentSideBar from './MainContentSideBar'
+import NothingFound from './NothingFound'
 
 function MainContent() {
 
-    const [articles] = useState(
-        [
-            {   
-                id: 1,
-                title: "Илон Маск пригласил Владимира Путина к диалогу в ClubHоuse",
-                subtitle: "Маск разместил два твита 2 твита с разницей в 12 минут в субботу около полуночи по московскому времени.",
-                tags: ["Бизнес", "Технологии", "Тренды"],
-                preview: "https://www.kxan.com/wp-content/uploads/sites/40/2021/02/Elon-1.jpg",
-                time: "2021-02-14T07:58:16Z"
-            },
-            {   
-                id: 2,
-                title: "Илон Маск пригласил Владимира Путина к диалогу в ClubHоuse",
-                subtitle: "Маск разместил два твита 2 твита с разницей в 12 минут в субботу около полуночи по московскому времени.",
-                tags: ["Бизнес", "Технологии", "Тренды"],
-                preview: "https://i1.wp.com/calmatters.org/wp-content/uploads/2020/05/Flickr_ElonMusk_01.jpg",
-                time: "2021-02-14T07:58:16Z"
-            },
-            {   
-                id: 3,
-                title: "Илон Маск пригласил Владимира Путина к диалогу в ClubHоuse",
-                subtitle: "Маск разместил два твита 2 твита с разницей в 12 минут в субботу около полуночи по московскому времени.",
-                tags: ["Бизнес", "Технологии", "Тренды"],
-                preview: "https://i1.wp.com/calmatters.org/wp-content/uploads/2020/05/Flickr_ElonMusk_01.jpg",
-                time: "2021-02-14T07:58:16Z"
-            },
-            {   
-                id: 4,
-                title: "Илон Маск пригласил Владимира Путина к диалогу в ClubHоuse",
-                subtitle: "Маск разместил два твита 2 твита с разницей в 12 минут в субботу около полуночи по московскому времени.",
-                tags: ["Бизнес", "Технологии", "Тренды"],
-                preview: "https://i1.wp.com/calmatters.org/wp-content/uploads/2020/05/Flickr_ElonMusk_01.jpg",
-                time: "2021-02-14T07:58:16Z"
-            }
-        ]
-    )
+    const sidebarAmount = 10
+
+    const [articleIndex] = useState(10)
+    const [articles, setArticles] = useState(null)
+    const [sidebarArticles, setSidebarArticles] = useState(null)
+    
+    const category = new URLSearchParams(useLocation().search).get('category')
+    const search = new URLSearchParams(useLocation().search).get('search')
+
+    useEffect(() => {
+
+        const getURL = (category !== null) ? `http://localhost:5500/articles?tags_like=${category}&_start=0&_end=${articleIndex + sidebarAmount}` : 
+                         (search !== null) ? `http://localhost:5500/articles?q=${search}&_start=0&_end=${articleIndex + sidebarAmount}`
+                                           : `http://localhost:5500/articles?_start=0&_end=${articleIndex + sidebarAmount}`
+
+        axios({ method: 'get', url: getURL, responseType: 'json' })
+            .then(response => {
+                const { data } = response
+                data.length < 20 ? setArticles(data) : setArticles(data.slice(0, -sidebarAmount))
+                data.length < 20 ? setSidebarArticles(null) : setSidebarArticles(data.slice(-sidebarAmount))
+            })
+            .catch(error => 
+                console.log(error))
+                
+    }, [category, articleIndex, search])
 
     return (
         <main className="main">
             <div className="container main__container">
-                <h1 className="head-title">Главное за день</h1>
+                <h1 className="head-title">{category}</h1>
                 <div className="content-container">
-                    <MainContentSideBar articles={articles} />
-                    <MainContentNewsBar articles={articles} />
+                    { (articles === null || articles.length === 0) ? (<NothingFound />) : 
+                    (<>
+                        <MainContentSideBar articles={sidebarArticles} />
+                        <MainContentNewsBar articles={articles} /> 
+                    </>) }
                 </div>
             </div>
         </main>

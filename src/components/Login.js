@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import authImage from '../assets/jpg/auth.jpg'
 
@@ -26,7 +26,7 @@ function Login() {
                     <button className="authorization__btn authorization__btn_action">{ (authType === 'login') ? "Войти" : "Зарегистрироваться" }</button>
                 </div>
                 <div className="authorization__inline-container">
-                    <NavLink to="/"><button className="authorization__btn authorization__btn_return">Вернуться на главную</button></NavLink>
+                    <Link to="/"><button className="authorization__btn authorization__btn_return">Вернуться на главную</button></Link>
                 </div>
             </div>
         </div>

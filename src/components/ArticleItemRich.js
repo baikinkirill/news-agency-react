@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function ArticleItemRich({ time, title, subtitle, tags, preview }) {
+function ArticleItemRich({ id, time, title, subtitle, tags, preview }) {
     
     const isToday = (someDate) => {
         const today = new Date()
@@ -22,8 +23,8 @@ function ArticleItemRich({ time, title, subtitle, tags, preview }) {
                         <li className="list-item meta-info__tag-item">{tags.slice(0, 1)}</li>
                     </ul>
                 </div>
-                <h2 className="article-title">{title}</h2>
-                <p className="article-subtitle">{subtitle}</p>
+                <Link to={`/article/${id}`} className="text-link"><h2 className="article-title">{title}</h2></Link>
+                <p className="article-subtitle">{(subtitle.length > 200) ? `${subtitle.slice(0, 200)}...` : subtitle}</p>
             </div>
             <div className="article__preview article__preview_md" style={{ backgroundImage: `url(${preview})` }}></div>
         </div>

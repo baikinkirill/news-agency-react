@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
-function ArticleItemRichLarge({ time, title, subtitle, tags, preview }) {
+function ArticleItemRichLarge({ id, time, title, subtitle, tags, preview }) {
 
     const isToday = (someDate) => {
         const today = new Date()
@@ -19,13 +20,10 @@ function ArticleItemRichLarge({ time, title, subtitle, tags, preview }) {
             <div className="article-info article-info_lg">
                 <div className="meta-info">
                     <p className="publication-time publication-time_lg">{publicationTime}</p>
-                    <ul className="list">
-                        <li className="list-item meta-info__tag-item">{tags.slice(0, 1)}</li>
-                    </ul>
                 </div>
                 <div className="article-text-container article-text-container_lg">
-                    <h2 className="article-title article-title_lg">{title}</h2>
-                    <p className="article-subtitle article-subtitle_lg">{subtitle}</p>
+                    <Link to={`/article/${id}`} className="text-link"><h2 className="article-title article-title_lg">{title}</h2></Link>
+                    <p className="article-subtitle article-subtitle_lg">{(subtitle.length > 250) ? `${subtitle.slice(0, 250)}...` : subtitle}</p>
                 </div>
             </div>
         </div>

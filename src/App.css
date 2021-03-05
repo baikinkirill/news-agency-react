@@ -11,6 +11,11 @@ button, input, textarea {
   font-family: 'Roboto', sans-serif;
 }
 
+.text-link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 .info-section {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -251,6 +256,7 @@ button, input, textarea {
 }
 
 .category-bar__list-item {
+  text-decoration: none;
   margin-right: 25px;
   color: #fff;
   cursor: pointer;
