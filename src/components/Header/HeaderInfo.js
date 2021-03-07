@@ -2,13 +2,18 @@ import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import { HeaderInfoContext } from './HeaderInfoContext'
+import { AuthContext } from '../AuthContext'
+import HeaderSignin from './HeaderSignin'
+import HeaderProfile from './HeaderProfile'
 
 import logo from '../../assets/svg/logo.svg'
 
 function HeaderInfo({ type }) {
 
     const { currenciesContext, weatherContext, dateContext } = useContext(HeaderInfoContext)
+    const { userContext } = useContext(AuthContext)
 
+    const [user] = userContext
     const [currencies] = currenciesContext
     const [weatherTemp] = weatherContext
     const [currentDate] = dateContext
@@ -27,12 +32,7 @@ function HeaderInfo({ type }) {
                     <li className="list-item info-section__list-item"><i className="ri-money-euro-circle-line"></i> {(1 / currencies.eur).toFixed(2)}</li>
                     <li className="list-item info-section__list-item"><i className="ri-bit-coin-line"></i> {currencies.btc} $</li>
                 </ul>
-                { (type === "auth") ? null : 
-                (<div className="info-section__auth">
-                    <Link to="/auth?type=register"><button className="info-section__btn info-section__register-btn">Зарегистрироваться</button></Link>
-                    <Link to="/auth?type=login"><button className="info-section__btn info-section__login-btn">Войти</button></Link>
-                    <Link to="/auth"><button className="info-section__btn info-section__mobile-btn"><i className="ri-login-box-line"></i></button></Link>
-                </div>) }
+                {(type !== "auth") ? (user !== null) ? <HeaderProfile /> : <HeaderSignin /> : null }
             </div>
         </section>
     )

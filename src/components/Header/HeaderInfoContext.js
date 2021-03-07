@@ -10,26 +10,33 @@ export function HeaderInfoProvider(props) {
     const [weatherTemp, setWeatherTemp] = useState(null)
 
     useEffect(() => {
+
+        const source = axios.CancelToken.source()
+
         /* USD & EUR */
-        axios({ method: 'get', url: 'https://www.cbr-xml-daily.ru/latest.js', responseType: 'json' })
+        axios({ method: 'get', url: 'https://www.cbr-xml-daily.ru/latest.js', responseType: 'json', cancelToken: source.token })
             .then(response => setCurrencies((prevState) => 
                 ({ ...prevState, usd: response.data.rates.USD, eur: response.data.rates.EUR,})))
             .catch((error) => 
-                console.log(error))
+                (!axios.isCancel(error)) && console.log(error))
 
         /* BTC */
-        axios({ method: 'get', url: 'https://api.coinbase.com/v2/exchange-rates?currency=BTC', responseType: 'json' })
+        axios({ method: 'get', url: 'https://api.coinbase.com/v2/exchange-rates?currency=BTC', responseType: 'json', cancelToken: source.token })
             .then(response => setCurrencies((prevState) => 
                 ({ ...prevState, btc: response.data.data.rates.USD })))
             .catch((error) => 
-                console.log(error))
+                (!axios.isCancel(error)) && console.log(error))
 
         /* Moscow Weather */
-        axios({ method: 'get', url: 'http://api.openweathermap.org/data/2.5/weather?q=moscow&appid=178ae9a5a359aa5a542be240bd36bc59&units=metric', responseType: 'json' })
+        axios({ method: 'get', url: 'http://api.openweathermap.org/data/2.5/weather?q=moscow&appid=178ae9a5a359aa5a542be240bd36bc59&units=metric', responseType: 'json', cancelToken: source.token })
             .then(response => 
                 setWeatherTemp(Math.round(response.data.main.feels_like)))
             .catch((error) => 
-                console.log(error))
+                (!axios.isCancel(error)) && console.log(error))
+
+        return () => {
+            source.cancel();
+        }
     }, [])
 
     /* Current Date & Time */

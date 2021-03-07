@@ -22,6 +22,34 @@ button, input, textarea {
     text-decoration: inherit;
 }
 
+.edit-options {
+    
+    display: flex;
+
+    &-btn {
+        font-size: 16px;
+        outline: none;
+        padding: 10px 15px;
+        background: none;
+        font-weight: 500;
+        color: $red_accent_color;
+        border: solid 1px $red_accent_color;
+
+        &:hover {
+            color: rgba($color: $red_accent_color, $alpha: 0.75);
+        }
+
+        & > i {
+            position: relative;
+            top: 2px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        justify-content: center;
+    }
+}
+
 .info-section {
     display: flex;
     justify-content: center;

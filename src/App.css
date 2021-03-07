@@ -16,6 +16,39 @@ button, input, textarea {
   text-decoration: inherit;
 }
 
+.edit-options {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.edit-options-btn {
+  font-size: 16px;
+  outline: none;
+  padding: 10px 15px;
+  background: none;
+  font-weight: 500;
+  color: #D32531;
+  border: solid 1px #D32531;
+}
+
+.edit-options-btn:hover {
+  color: rgba(211, 37, 49, 0.75);
+}
+
+.edit-options-btn > i {
+  position: relative;
+  top: 2px;
+}
+
+@media screen and (max-width: 768px) {
+  .edit-options {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+}
+
 .info-section {
   display: -webkit-box;
   display: -ms-flexbox;

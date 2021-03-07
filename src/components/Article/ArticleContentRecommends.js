@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import axios from 'axios'
 
 function ArticleContentRecommends({ article }) {
@@ -27,11 +28,11 @@ function ArticleContentRecommends({ article }) {
     return (
         (recommends === null) ? null : (
             <section className="side-bar side-bar_recommendations">
-                { recommends.map(item => item.id === article.id ? null :
-                    <div className="side-bar__item-container side-bar__item-container_overview" style={{ backgroundImage: `url(${item.preview})` }}>
+                { recommends.map((item, index) => item.id === article.id ? null :
+                    <div key={index} className="side-bar__item-container side-bar__item-container_overview" style={{ backgroundImage: `url(${item.preview})` }}>
                         <div className="darken darken_recommendations"></div>
                         <p className="side-bar__item-meta side-bar__item-meta_recommendations">{publicationTime(new Date(item.time))}</p>
-                        <p className="side-bar__item side-bar__item_recommendations">{item.title}</p>
+                        <p className="side-bar__item side-bar__item_recommendations"><Link className="text-link" to={`/article/${item.id}`}>{item.title}</Link></p>
                         <p className="side-bar__item-meta side-bar__item-meta_recommendations side-bar__item-meta_tag side-bar__item-meta_tag_recommendations">{item.tags.join(', ')}</p>
                     </div>) }
             </section>

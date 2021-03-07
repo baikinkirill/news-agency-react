@@ -3,8 +3,8 @@ import React, { useState } from 'react'
 import HeaderInfo from './HeaderInfo'
 import HeaderCategories from './HeaderCategories'
 import HeaderInfoResponsive from './HeaderInfoResponsive'
-import HeaderSearch from './HeaderSearch'
 import { HeaderInfoProvider } from './HeaderInfoContext'
+import HeaderSearchResponsive from './HeaderSearchResponsive'
 
 function Header() {
 
@@ -31,7 +31,7 @@ function Header() {
                 <HeaderInfo />
                 <HeaderCategories categories={categories} />
                 <HeaderInfoResponsive />
-                <HeaderSearch />
+                <HeaderSearchResponsive />
             </header>
         </HeaderInfoProvider>
     )

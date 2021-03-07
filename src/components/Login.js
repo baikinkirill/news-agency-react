@@ -1,12 +1,38 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState, useContext } from 'react'
+import { Link, useHistory } from 'react-router-dom'
+import axios from 'axios'
 
 import authImage from '../assets/jpg/auth.jpg'
 
+import { AuthContext } from './AuthContext'
+
 function Login() {
+
+    const history = useHistory()
+    const { userContext, tokenContext } = useContext(AuthContext)
+
+    const [, setUser] = userContext
+    const [, setToken] = tokenContext
+
+    const [login, setLogin] = useState(null)
+    const [password, setPassword] = useState(null)
+    const [repeatPassword, setRepeatPassword] = useState(null)
 
     const urlParams = new URLSearchParams(window.location.search)
     const [authType, setAuthType] = useState(urlParams.get('type') || 'login')
+
+    const handleAuth = () => {
+        axios({ method: 'post', url: `http://localhost:5500/${authType}`, responseType: 'json', data: { login: login, password: password }})
+            .then(response => { 
+                if (response.data !== null && response.data.accessToken !== null) {
+                    setUser(login)
+                    setToken(response.data.accessToken)
+                    document.cookie = `token=${response.data.accessToken};`
+                    document.cookie = `user=${login}`
+                    history.push('/')
+                }
+            })
+    }
 
     return (
         <div className="authorization__container">
@@ -18,12 +44,13 @@ function Login() {
                     <button className={(authType === 'register') ? "authorization__btn authorization__btn_register authorization__btn_active" : "authorization__btn authorization__btn_register"} onClick={() => setAuthType('register')}>Регистрация</button>
                 </div>
                 <div className="authorization__inline-container authorization__inline-container_column">
-                    <input type="text" className="authorization__input authorization__input_login" placeholder="Логин" />
-                    <input type="password" className="authorization__input authorization__input_password" placeholder="Пароль" />
-                    { (authType === 'login') ? null : <input type="password" className="authorization__input authorization__input_password" placeholder="Повторите пароль" /> }
+                    <input type="text" className="authorization__input authorization__input_login" placeholder="Логин" onChange={e => setLogin(e.target.value)} />
+                    <input type="password" className="authorization__input authorization__input_password" placeholder="Пароль" onChange={e => setPassword(e.target.value)} />
+                    { (authType === 'login') ? null : <input type="password" className="authorization__input authorization__input_password" placeholder="Повторите пароль" onChange={e => setRepeatPassword(e.target.value)} /> }
                 </div>
                 <div className="authorization__inline-container">
-                    <button className="authorization__btn authorization__btn_action">{ (authType === 'login') ? "Войти" : "Зарегистрироваться" }</button>
+                    {(authType === 'login') ? <button className="authorization__btn authorization__btn_action" onClick={handleAuth}>Войти</button> :
+                    <button className="authorization__btn authorization__btn_action" onClick={(repeatPassword === password) ? handleAuth : null}>{(repeatPassword === password) ? "Зарегистрироваться" : "Пароли не совпадают"}</button>}
                 </div>
                 <div className="authorization__inline-container">
                     <Link to="/"><button className="authorization__btn authorization__btn_return">Вернуться на главную</button></Link>
