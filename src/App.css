@@ -1250,6 +1250,7 @@ button, input, textarea {
 }
 
 .data-input__container_image {
+  padding: 20px 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1260,7 +1261,7 @@ button, input, textarea {
       -ms-flex-align: center;
           align-items: center;
   min-height: 170px;
-  background: repeating-linear-gradient(45deg, #FAFAFA, #FAFAFA 30px, #F2F2F2 30px, #F2F2F2 60px);
+  position: relative;
 }
 
 .data-input__title {
@@ -1330,6 +1331,9 @@ button, input, textarea {
 }
 
 .data-input__input-label {
+  z-index: 1;
+  width: 100%;
+  padding: 20px 0;
   cursor: pointer;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -1359,6 +1363,22 @@ button, input, textarea {
 
 .data-input__input-label:hover > i {
   color: rgba(0, 0, 0, 0.35);
+}
+
+.data-input__input-label_active {
+  border-radius: 10px;
+  padding: 0 30px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background: #fff;
+  color: #D32531;
+  -webkit-box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.15);
+          box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.15);
+}
+
+.data-input__input-label_active:hover {
+  color: rgba(211, 37, 49, 0.65);
 }
 
 .data-input__input_image {
@@ -1450,8 +1470,18 @@ button, input, textarea {
 .data-input__image {
   min-height: 350px;
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-size: cover;
   background-position: center;
+  position: relative;
 }
 
 .data-input__link {
@@ -1546,7 +1576,22 @@ button, input, textarea {
 }
 
 .data-input__action-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   margin-bottom: 10px;
+}
+
+@media screen and (max-width: 360px) {
+  .data-input__action-buttons {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
 }
 
 .data-input__action-buttons_btn {
@@ -1577,5 +1622,9 @@ button, input, textarea {
 
 .data-input__action-buttons_delete {
   background: none;
+}
+
+.stripe-background {
+  background: repeating-linear-gradient(45deg, #FAFAFA, #FAFAFA 30px, #F2F2F2 30px, #F2F2F2 60px);
 }
 /*# sourceMappingURL=App.css.map */

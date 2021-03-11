@@ -1,4 +1,5 @@
 import React, { useState, useContext } from 'react'
+import Cookies from 'js-cookie'
 import { Link, useHistory } from 'react-router-dom'
 import axios from 'axios'
 
@@ -27,8 +28,10 @@ function Login() {
                 if (response.data !== null && response.data.accessToken !== null) {
                     setUser(login)
                     setToken(response.data.accessToken)
-                    document.cookie = `token=${response.data.accessToken};`
-                    document.cookie = `user=${login}`
+                    // document.cookie = `token=${response.data.accessToken};`
+                    // document.cookie = `user=${login}`
+                    Cookies.set('token', response.data.accessToken, { expires: 7, path: '/' })
+                    Cookies.set('user', login, { expires: 7, path: '/' });
                     history.push('/')
                 }
             })

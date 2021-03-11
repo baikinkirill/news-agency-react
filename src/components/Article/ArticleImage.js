@@ -2,7 +2,7 @@ import React from 'react'
 
 function ArticleImage({ url }) {
     return (
-        <div className="article-image" style={{backgroundImage: `url(${url})`}}></div>
+        <div className={url === null ? "article-image stripe-background" : "article-image"} style={url === null ? {} : {backgroundImage: `url(${url})`}}></div>
     )
 }
 

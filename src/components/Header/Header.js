@@ -6,7 +6,7 @@ import HeaderInfoResponsive from './HeaderInfoResponsive'
 import { HeaderInfoProvider } from './HeaderInfoContext'
 import HeaderSearchResponsive from './HeaderSearchResponsive'
 
-function Header() {
+function Header({ type }) {
 
     // todo: move to server
     const [categories] = useState(
@@ -28,10 +28,10 @@ function Header() {
     return (
         <HeaderInfoProvider>
             <header>
-                <HeaderInfo />
-                <HeaderCategories categories={categories} />
-                <HeaderInfoResponsive />
-                <HeaderSearchResponsive />
+                <HeaderInfo type={type} />
+                {(type === 'article_edit') ? null : <HeaderCategories categories={categories} />}
+                <HeaderInfoResponsive type={type} />
+                {(type === 'article_edit') ? null : <HeaderSearchResponsive />}
             </header>
         </HeaderInfoProvider>
     )

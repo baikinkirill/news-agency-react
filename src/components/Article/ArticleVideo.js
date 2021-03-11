@@ -2,7 +2,7 @@ import React from 'react'
 
 function ArticleVideo({ url }) {
 
-    const [src] = url.match(/([a-z0-9_-]{11})/gim)
+    const src = url === null ? null : url.match(/([a-z0-9_-]{11})/gim)
 
     return (
         <div className="article-video">

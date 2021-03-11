@@ -1065,18 +1065,12 @@ button, input, textarea {
         }
 
         &_image {
+            padding: 20px 0;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 170px;
-
-            background: repeating-linear-gradient(
-                45deg,
-                #FAFAFA,
-                #FAFAFA 30px,
-                #F2F2F2 30px,
-                #F2F2F2 60px
-            );
+            position: relative;
         }
     }
 
@@ -1122,6 +1116,9 @@ button, input, textarea {
         }
 
         &-label {
+            z-index: 1;
+            width: 100%;
+            padding: 20px 0;
             cursor: pointer;
             display: flex;
             justify-content: center;
@@ -1140,6 +1137,19 @@ button, input, textarea {
 
                 & > i {
                     color: rgba($color: #000, $alpha: 0.35);
+                }
+            }
+
+            &_active {
+                border-radius: 10px;
+                padding: 0 30px;
+                width: fit-content;
+                background: #fff;
+                color: $red_accent_color;
+                box-shadow: 10px 10px 10px rgba($color: #fff, $alpha: 0.15);
+
+                &:hover {
+                    color: rgba($color: $red_accent_color, $alpha: 0.65);
                 }
             }
         }
@@ -1215,9 +1225,12 @@ button, input, textarea {
     &__image {
         min-height: 350px;
         width: 100%;
-        // background-image: url('assets/images/png/preview_1.png');
+        display: flex;
+        justify-content: center;
+        align-items: center;
         background-size: cover;
         background-position: center;
+        position: relative;
     }
 
     &__link {
@@ -1297,7 +1310,13 @@ button, input, textarea {
         flex-direction: column;
 
         &-buttons {
+            display: flex;
             margin-bottom: 10px;
+
+            @media screen and (max-width: 360px) {
+                flex-direction: column;
+                justify-content: center;
+            }
 
             &_btn {
                 outline: none;
@@ -1330,4 +1349,14 @@ button, input, textarea {
             }
         }
     }
+}
+
+.stripe-background {
+    background: repeating-linear-gradient(
+                45deg,
+                #FAFAFA,
+                #FAFAFA 30px,
+                #F2F2F2 30px,
+                #F2F2F2 60px
+            );
 }

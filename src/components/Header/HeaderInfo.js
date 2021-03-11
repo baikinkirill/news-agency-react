@@ -25,13 +25,18 @@ function HeaderInfo({ type }) {
         <section className="info-section">
             <div className={(type === "auth") ? "container info-section__container_login" : "container" }>
                 <Link to="/"><img src={logo} alt="" className="info-section__logo" /></Link>
-                <ul className="list info-section__list">
-                    <li className="list-item info-section__list-item"><i className="ri-calendar-todo-line"></i> {time}</li>
-                    <li className="list-item info-section__list-item"><i className="ri-sun-cloudy-line"></i> Москва, {weatherTemp}°C</li>
-                    <li className="list-item info-section__list-item"><i className="ri-money-dollar-circle-line"></i> {(1 / currencies.usd).toFixed(2)}</li>
-                    <li className="list-item info-section__list-item"><i className="ri-money-euro-circle-line"></i> {(1 / currencies.eur).toFixed(2)}</li>
-                    <li className="list-item info-section__list-item"><i className="ri-bit-coin-line"></i> {currencies.btc} $</li>
-                </ul>
+                {(type === 'article_edit') 
+                    ? <ul className="list info-section__list">
+                        <Link className="text-link" to="/"><li className="list-item info-section__list-item info-section__nav-item">На главную</li></Link>
+                        <Link className="text-link" to="/editor"><li className="list-item info-section__list-item info-section__nav-item">Панель редактирования</li></Link>
+                    </ul> 
+                    : <ul className="list info-section__list">
+                        <li className="list-item info-section__list-item"><i className="ri-calendar-todo-line"></i> {time}</li>
+                        <li className="list-item info-section__list-item"><i className="ri-sun-cloudy-line"></i> Москва, {weatherTemp}°C</li>
+                        <li className="list-item info-section__list-item"><i className="ri-money-dollar-circle-line"></i> {(1 / currencies.usd).toFixed(2)}</li>
+                        <li className="list-item info-section__list-item"><i className="ri-money-euro-circle-line"></i> {(1 / currencies.eur).toFixed(2)}</li>
+                        <li className="list-item info-section__list-item"><i className="ri-bit-coin-line"></i> {currencies.btc} $</li>
+                    </ul>}
                 {(type !== "auth") ? (user !== null) ? <HeaderProfile /> : <HeaderSignin /> : null }
             </div>
         </section>
