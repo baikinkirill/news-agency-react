@@ -2,6 +2,7 @@ import React from "react"
 
 import ArticleItem from "./ArticleItem"
 
+/* Articles recommends */
 function MainContentSideBar({ articles }) {
   return articles === null || articles.length === 0 ? null : (
     <section className="side-bar">

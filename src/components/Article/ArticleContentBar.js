@@ -9,6 +9,7 @@ import ArticleLink from "./ArticleLink"
 import ArticleImage from "./ArticleImage"
 import ArticleVideo from "./ArticleVideo"
 
+/* Article Display Data */
 function ArticleContentBar({ article }) {
   
   const animations = {

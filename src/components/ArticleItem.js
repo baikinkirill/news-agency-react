@@ -2,6 +2,7 @@ import React from "react"
 import { getPublicationTime } from "./Article/ArticleHelper"
 import { Link } from "react-router-dom"
 
+/* Side-bar Article item */
 function ArticleItem({ id, title, time, tags }) {
   return (
     <div className="side-bar__item-container">

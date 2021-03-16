@@ -11,6 +11,7 @@ export function AuthProvider({ children }) {
   const [token, setToken] = useState(Cookies.get("token"))
   const [user, setUser] = useState(null)
 
+  /* Check for Tokens in DB */
   useEffect(() => {
     axios({
       method: "get",

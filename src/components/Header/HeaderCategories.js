@@ -8,8 +8,7 @@ function HeaderCategories({ categories }) {
   const location = useLocation()
   const [menuState, setMenuState] = useState(false)
 
-  console.log()
-
+  /* Sorts articles by categories */
   const handleCategory = (name, index) => {
     if (
       location.pathname.length > 6 &&

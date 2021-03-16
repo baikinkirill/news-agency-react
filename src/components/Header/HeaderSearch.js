@@ -5,6 +5,7 @@ function HeaderSearch() {
   const history = useHistory()
   const [searchQuery, setSearchQuery] = useState(null)
 
+  /* Header search */
   const handleOnChange = (e) => {
     const { value } = e.target
     setSearchQuery(value)

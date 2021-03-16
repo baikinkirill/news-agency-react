@@ -44,11 +44,11 @@ function Footer() {
           <div className="footer-links">
             <div className="footer-links__container">
               <p className="footer-links__item">
-                <i className="ri-github-fill"></i>
-                <i className="ri-telegram-fill"></i>
+                <a href="https://github.com/xaazias/news-agency-react"><i className="ri-github-fill"></i></a>
+                <a href="https://t.me/saizaax"><i className="ri-telegram-fill"></i></a>
               </p>
-              <p className="footer-links__item">saizaax.off@gmail.com</p>
-              <p className="footer-links__item">vk.com/saizaax</p>
+              <p className="footer-links__item"><a href="mailto: saizaax.off@gmail.com">saizaax.off@gmail.com</a></p>
+              <p className="footer-links__item"><a href="https://vk.com/saizaax">vk.com/saizaax</a></p>
             </div>
           </div>
         </div>

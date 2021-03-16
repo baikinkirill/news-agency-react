@@ -8,6 +8,7 @@ function HeaderProfile() {
   const [, setToken] = tokenContext
   const [user, setUser] = userContext
 
+  /* Logout function */
   const handleLogout = () => {
     document.cookie
       .split(";")

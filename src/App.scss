@@ -849,11 +849,17 @@ button, input, textarea {
     
     &__item {
         
+        text-decoration: none;
         color: rgba($color: #fff, $alpha: 0.75);
         font-weight: 400;
         margin-right: 10px;
     
-        & > i {
+        & > a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        & > a > i {
             font-size: 24px;
         }
     
@@ -861,12 +867,12 @@ button, input, textarea {
             color: rgba($color: #fff, $alpha: 1);
             cursor: pointer;
     
-            & > i {
+            & > a {
                 color: rgba($color: #fff, $alpha: 0.75);
             }
         }
     
-        & > i:hover {
+        & > a:hover {
             color: rgba($color: #fff, $alpha: 1);
         }
     }
@@ -1362,4 +1368,39 @@ button, input, textarea {
             );
     background-position: center !important;
     background-size: cover !important;
+}
+
+.page-404 {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+    justify-content: center;
+
+    &__title {
+        font-size: 48px;
+        margin: 0 10px;
+    }
+
+    &__subtitle {
+        margin: 10px;
+        color: #191819;
+    }
+
+    &__btn {
+        outline: none;
+        cursor: pointer;
+        color: $red_accent_color;
+        margin: 10px;
+        border: solid 1px $red_accent_color;
+        border-radius: 5px;
+        padding: 10px 15px;
+        text-decoration: none;
+
+        &:hover {
+            color: rgba($color: $red_accent_color, $alpha: 0.75);
+        }
+    }
 }

@@ -3,6 +3,7 @@ import React, { useContext } from "react"
 import { HeaderInfoContext } from "./HeaderInfoContext"
 import { HeaderInfoLoader } from "./HeaderContentLoaders"
 
+/* Header info (currencies, weather) for Mobile-layout */
 function HeaderInfoResponsive() {
   const { currenciesContext, weatherContext, dateContext } = useContext(
     HeaderInfoContext

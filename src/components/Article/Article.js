@@ -4,6 +4,7 @@ import Header from "../Header/Header"
 import ArticleContent from "./ArticleContent"
 import Footer from "../Footer"
 
+/* Article Parent Component */
 function Article(props) {
   return (
     <>

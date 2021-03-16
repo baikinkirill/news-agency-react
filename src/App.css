@@ -1011,12 +1011,18 @@ button, input, textarea {
 }
 
 .footer-links__item {
+  text-decoration: none;
   color: rgba(255, 255, 255, 0.75);
   font-weight: 400;
   margin-right: 10px;
 }
 
-.footer-links__item > i {
+.footer-links__item > a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer-links__item > a > i {
   font-size: 24px;
 }
 
@@ -1025,11 +1031,11 @@ button, input, textarea {
   cursor: pointer;
 }
 
-.footer-links__item:hover > i {
+.footer-links__item:hover > a {
   color: rgba(255, 255, 255, 0.75);
 }
 
-.footer-links__item > i:hover {
+.footer-links__item > a:hover {
   color: white;
 }
 
@@ -1635,5 +1641,49 @@ button, input, textarea {
   background: repeating-linear-gradient(45deg, #FAFAFA, #FAFAFA 30px, #F2F2F2 30px, #F2F2F2 60px);
   background-position: center !important;
   background-size: cover !important;
+}
+
+.page-404 {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: auto;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.page-404__title {
+  font-size: 48px;
+  margin: 0 10px;
+}
+
+.page-404__subtitle {
+  margin: 10px;
+  color: #191819;
+}
+
+.page-404__btn {
+  outline: none;
+  cursor: pointer;
+  color: #D32531;
+  margin: 10px;
+  border: solid 1px #D32531;
+  border-radius: 5px;
+  padding: 10px 15px;
+  text-decoration: none;
+}
+
+.page-404__btn:hover {
+  color: rgba(211, 37, 49, 0.75);
 }
 /*# sourceMappingURL=App.css.map */

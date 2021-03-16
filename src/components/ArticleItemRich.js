@@ -9,6 +9,7 @@ import { toast } from "react-toastify"
 import { AuthContext } from "./AuthContext"
 import { motion } from "framer-motion"
 
+/* Default Article Item */
 function ArticleItemRich({
   id,
   time,
@@ -24,6 +25,7 @@ function ArticleItemRich({
   const { tokenContext } = useContext(AuthContext)
   const [token] = tokenContext
 
+  /* Remove article */
   const handleRemove = (id) => {
     setIsLoading(true)
     axios({

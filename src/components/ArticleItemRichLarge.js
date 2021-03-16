@@ -2,6 +2,7 @@ import React from "react"
 import { getPublicationTime } from "./Article/ArticleHelper"
 import { Link } from "react-router-dom"
 
+/* Large Article item */
 function ArticleItemRichLarge({ id, time, title, subtitle, tags, preview }) {
   return (
     <div

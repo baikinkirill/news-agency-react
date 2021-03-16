@@ -5,6 +5,7 @@ import { Link } from "react-router-dom"
 import ArticleItemRichLarge from "./ArticleItemRichLarge"
 import ArticleItemRich from "./ArticleItemRich"
 
+/* Articles container */
 function MainContentNewsBar({ articles, type, setArticles }) {
   const [majorArticle] = articles === null ? [null] : articles.slice(0, 1)
   const otherArticles =

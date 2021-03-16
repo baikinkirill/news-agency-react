@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "react-router-dom"
 
+/* Sign-in */
 function HeaderSignin() {
   return (
     <div className="info-section__auth">

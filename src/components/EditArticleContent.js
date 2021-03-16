@@ -31,11 +31,13 @@ function EditArticleContent({ match }) {
 
   const [isLoading, setIsLoading] = useState(false)
 
+  /* Setting current time */
   useEffect(() => {
     const timer = setInterval(() => setCurrentTime(new Date()), 10000)
     return () => clearInterval(timer)
   })
 
+  /* Default Edit-article data template */
   const [values, setValues] = useState({
     title: "Заголовок",
     subtitle: "Подзаголовок",
@@ -47,6 +49,7 @@ function EditArticleContent({ match }) {
   })
   const [newId, setNewId] = useState("new")
 
+  /* Getting article data */
   useEffect(() => {
     if (match.params.id !== "new") {
       setIsLoading(true)
@@ -87,6 +90,7 @@ function EditArticleContent({ match }) {
 
   const [isSaved, setIsSaved] = useState(true)
 
+  /* Setting data on edit */
   const handleInputChange = (e, type = null, id = null) => {
     setIsSaved(false)
     const { name, value } = e.target
@@ -108,6 +112,7 @@ function EditArticleContent({ match }) {
       })
   }
 
+  /* Check if images presented in Base64 & uploads it to hosting */
   const convertImages = async (data) => {
     try {
       if (data.preview !== null && data.preview.slice(0, 4) !== "http")
@@ -132,6 +137,7 @@ function EditArticleContent({ match }) {
     }
   }
 
+  /* Posting article */
   const handleArticlePost = async (type = null) => {
     try {
       setIsLoading(true)
@@ -162,6 +168,7 @@ function EditArticleContent({ match }) {
     }
   }
 
+  /* Editing article */
   const handleArticlePatch = async (type = null) => {
     try {
       setIsLoading(true)
@@ -191,6 +198,7 @@ function EditArticleContent({ match }) {
     }
   }
 
+  /* Upload image to hosting */
   const uploadImage = (img, id) => {
     return new Promise((resolve, reject) => {
       axios({

@@ -7,7 +7,9 @@ import Auth from "./components/Auth"
 import Article from "./components/Article/Article"
 import Editor from "./components/Editor"
 import EditArticle from "./components/EditArticle"
+import Page404 from "./components/Page404"
 
+/* Application Routes */
 function Routes() {
   const { userContext } = useContext(AuthContext)
   const [user] = userContext
@@ -30,6 +32,7 @@ function Routes() {
           component={user === null ? Main : EditArticle}
         />
         <Route path="/:category" exact component={Main} />
+        <Route component={Page404} />
       </Switch>
     </Router>
   )

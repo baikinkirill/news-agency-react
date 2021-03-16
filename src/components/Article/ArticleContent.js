@@ -17,6 +17,7 @@ function ArticleContent({ match }) {
   const [user] = userContext
   const [isLoading, setIsLoading] = useState(false)
 
+  /* Check if article exists */
   useEffect(() => {
     const source = axios.CancelToken.source()
     setIsLoading(true)

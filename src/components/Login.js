@@ -23,6 +23,7 @@ function Login() {
   const urlParams = new URLSearchParams(window.location.search)
   const [authType, setAuthType] = useState(urlParams.get("type") || "login")
 
+  /* Authorization */
   const handleAuth = () => {
     axios({
       method: "post",

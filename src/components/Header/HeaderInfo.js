@@ -9,6 +9,7 @@ import HeaderProfile from "./HeaderProfile"
 
 import logo from "../../assets/svg/logo.svg"
 
+/* Header info (currencies, weather) */
 function HeaderInfo({ type }) {
   const { currenciesContext, weatherContext, dateContext } = useContext(
     HeaderInfoContext

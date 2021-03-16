@@ -36,6 +36,7 @@ function ArticleContentRecommends({ article }) {
     }
   }
 
+  /* Get recommendations with similar tags */
   useEffect(() => {
     article !== null &&
       axios({

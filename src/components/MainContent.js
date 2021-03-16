@@ -43,6 +43,7 @@ function MainContent({ type, match }) {
       ? urls.search
       : urls.default
 
+  /* Getting articles */
   useEffect(() => {
     const source = axios.CancelToken.source()
 
