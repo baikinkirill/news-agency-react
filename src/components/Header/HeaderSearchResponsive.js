@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react"
 
-import HeaderSearch from './HeaderSearch'
+import HeaderSearch from "./HeaderSearch"
 
 function HeaderSearchResponsive() {
-    return (
-        <section className="search-bar">
-            <div className="search-bar__container">
-                <HeaderSearch />
-            </div>
-        </section>
-    )
+  return (
+    <section className="search-bar">
+      <div className="search-bar__container">
+        <HeaderSearch />
+      </div>
+    </section>
+  )
 }
 
 export default HeaderSearchResponsive

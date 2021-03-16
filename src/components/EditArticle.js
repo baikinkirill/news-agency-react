@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react"
 
-import EditArticleContent from './EditArticleContent'
-import Header from './Header/Header'
+import EditArticleContent from "./EditArticleContent"
+import Header from "./Header/Header"
 
-function EditArticle() {
-    return (
-        <>
-            <Header type={'article_edit'} />
-            <EditArticleContent />
-        </>
-    )
+function EditArticle(props) {
+  return (
+    <>
+      <Header type={"article_edit"} />
+      <EditArticleContent {...props} />
+    </>
+  )
 }
 
 export default EditArticle

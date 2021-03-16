@@ -1,15 +1,15 @@
-import React from 'react'
+import React from "react"
 
-import Header from './Header/Header'
-import MainContent from './MainContent'
+import Header from "./Header/Header"
+import MainContent from "./MainContent"
 
-function Editor() {
-    return (
-        <>
-            <Header />
-            <MainContent type='editor' />
-        </>
-    )
+function Editor(props) {
+  return (
+    <>
+      <Header />
+      <MainContent type="editor" {...props} />
+    </>
+  )
 }
 
 export default Editor

@@ -1,31 +1,64 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState, useContext } from "react"
+import { useHistory } from "react-router-dom"
+import axios from "axios"
 
-import ArticleContentBar from './ArticleContentBar'
-import ArticleContentRecommends from './ArticleContentRecommends'
+import Loading from "react-fullscreen-loading"
+import config from "../../config.json"
+import { ArticleContentLoader } from "../ContentLoaders"
+import { AuthContext } from "../AuthContext"
+import ArticleContentBar from "./ArticleContentBar"
+import ArticleContentRecommends from "./ArticleContentRecommends"
 
 function ArticleContent({ match }) {
+  const history = useHistory()
+  const [article, setArticle] = useState(null)
 
-    const [article, setArticle] = useState(null)
+  const { userContext } = useContext(AuthContext)
+  const [user] = userContext
+  const [isLoading, setIsLoading] = useState(false)
 
-    useEffect(() => {
-        axios({ method: 'get', url:`http://localhost:5500/articles/${match.params.id}`, responseType: 'json' })
-            .then(response => 
-                setArticle(response.data))
-            .catch((error) => 
-                console.log(error))
-    }, [match.params.id])
+  useEffect(() => {
+    const source = axios.CancelToken.source()
+    setIsLoading(true)
+    axios({
+      method: "get",
+      url: `${config.json_server_address}/articles/${match.params.id}`,
+      responseType: "json",
+      cancelToken: source.token
+    })
+      .then((response) => {
+        response.data.isPublished === true || user !== null
+          ? setArticle(response.data)
+          : history.push("/")
+        setIsLoading(false)
+        })
+      .catch((error) => {
+        console.log(error)
+        setIsLoading(false)
+      })
 
-    return (
-        <main className="main">
-            <div className="container main__container">
-                <div className="content-container">
-                    <ArticleContentBar article={article} />
-                    <ArticleContentRecommends article={article} />
-                </div>
-            </div>
-        </main>
-    )
+    return () => {
+      source.cancel()
+    }
+  }, [match.params.id, history, user])
+
+  return (
+    <main className="main">
+      <Loading loading={isLoading} background="#fff" />
+      <div className="container main__container">
+        <div className="content-container">
+          {article === null ? (
+            <ArticleContentLoader />
+          ) : (
+            <>
+              <ArticleContentBar article={article} />
+              <ArticleContentRecommends article={article} />
+            </>
+          )}
+        </div>
+      </div>
+    </main>
+  )
 }
 
 export default ArticleContent

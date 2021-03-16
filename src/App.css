@@ -30,6 +30,7 @@ button, input, textarea {
   font-weight: 500;
   color: #D32531;
   border: solid 1px #D32531;
+  border-radius: 5px;
 }
 
 .edit-options-btn:hover {
@@ -501,6 +502,7 @@ button, input, textarea {
 }
 
 .side-bar {
+  border-radius: 7.5px;
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
@@ -665,6 +667,7 @@ button, input, textarea {
   display: -ms-flexbox;
   display: flex;
   position: relative;
+  border-radius: 7.5px;
 }
 
 @media screen and (max-width: 1100px) {
@@ -691,6 +694,7 @@ button, input, textarea {
 }
 
 .article_new-btn-container {
+  border-radius: 7.5px;
   margin: 20px;
   height: 100%;
   border: solid 1px #F2F2F2;
@@ -751,6 +755,7 @@ button, input, textarea {
   width: 100%;
   height: 100%;
   background-size: cover;
+  background-position: center;
 }
 
 .article__preview_md {
@@ -763,6 +768,7 @@ button, input, textarea {
   background-size: cover;
   background-position: center;
   min-height: 400px;
+  overflow: hidden;
 }
 
 .article-info {
@@ -926,6 +932,7 @@ button, input, textarea {
 }
 
 .red-articles-btn {
+  border-radius: 5px;
   color: #fff;
   font-size: 16px;
   font-weight: 500;
@@ -1373,8 +1380,8 @@ button, input, textarea {
   width: fit-content;
   background: #fff;
   color: #D32531;
-  -webkit-box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.15);
-          box-shadow: 10px 10px 10px rgba(255, 255, 255, 0.15);
+  -webkit-box-shadow: 10px 10px 25px rgba(255, 255, 255, 0.1);
+          box-shadow: 10px 10px 25px rgba(255, 255, 255, 0.1);
 }
 
 .data-input__input-label_active:hover {
@@ -1626,5 +1633,7 @@ button, input, textarea {
 
 .stripe-background {
   background: repeating-linear-gradient(45deg, #FAFAFA, #FAFAFA 30px, #F2F2F2 30px, #F2F2F2 60px);
+  background-position: center !important;
+  background-size: cover !important;
 }
 /*# sourceMappingURL=App.css.map */
