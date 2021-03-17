@@ -14,6 +14,8 @@
 
 #### 🎨 Design:
 [Figma Initial Design Layout](https://www.figma.com/file/qcBJqCH7LcIDNSA4ZaxRBz/react-news-agency)
+
+![](https://i.imgur.com/Dyr8cO0.png)
 <br><br>
 
 #### ☑️ Completed Tasks:

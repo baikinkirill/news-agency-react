@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react"
-import { useHistory } from "react-router-dom"
+import { useHistory, useLocation } from "react-router-dom"
 
 function HeaderSearch() {
+  const location = useLocation()
   const history = useHistory()
   const [searchQuery, setSearchQuery] = useState(null)
+  const [loc] = useState(location.pathname.slice(1).split('/')[0])
 
   /* Header search */
   const handleOnChange = (e) => {
@@ -23,7 +25,7 @@ function HeaderSearch() {
   }, [searchQuery, history])
 
   return (
-    <>
+    (loc === 'editor' || loc === '') ? <>
       <input
         className="category-bar__search"
         type="text"
@@ -31,7 +33,7 @@ function HeaderSearch() {
         onChange={handleOnChange}
       />
       <i className="ri-search-line"></i>
-    </>
+    </> : null
   )
 }
 
